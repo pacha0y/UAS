@@ -1,0 +1,128 @@
+.container{padding:5px;}
+.uas-header img { width: 120px; height: 120px;}
+#uas-logo { float: left; }
+.panel-footer { background: #650062; text-align: center; color: #fff;}
+.submenu{margin-top: -10px; text-align: left;}
+.submenu a.active{color: #b6944b;}
+/** horizontal navigation */
+.uas-nav { width: 100%; background: #650062; text-align: left; font-size: 20px;}
+.uas-nav ul {list-style: none;}
+.uas-nav ul li {display: inline-block;  padding: 4px;}
+.uas-nav ul li a{color: #fff; text-decoration: none; padding: 5px;}
+.uas-nav ul li a:hover{background: #8a5f88; text-decoration: none;}
+.uas-nav ul li ul li a{color: #3f382a;}
+.uas-nav ul li ul li a:hover{text-shadow: 2px 2px 4px #000000;background: #fff}	
+		#boundary{
+			--font-size:.8em;
+			--border:1px solid #999;
+			background:#fff;
+			padding:20px;
+			width:900px;
+			margin:0 auto;
+		}
+		#content{
+			clear:both;
+			padding:0 14px
+		}
+		#content img{
+			border:1px solid #666;
+			padding:10px 20px;
+			display:block;
+			margin:5px auto;
+		}
+#content p{
+	line-height:1.5em;
+	padding-bottom:.5em;
+}
+		#content ul{
+	list-style-type:square;
+	margin-left:2em;
+}
+#content li{
+	padding:5px 0;
+}
+#footer{
+	color:#666;
+	font-size:.75em;
+	padding:5px 20px;
+	text-align:right;
+	width:700px;
+	margin:0 auto;
+}
+#footer a{color:#333;}
+.nextprev{
+	padding:1em;
+	font-weight:bold;
+	text-align:right;
+}
+pre{
+	font-size:1.1em;
+	font-family:courier,monospace;
+	margin-bottom:.5em;
+	padding:1em;
+	border-left:#eee 2px solid;
+}
+#content a:link{
+	color:#369;
+}
+#content a:visited{
+	color:#036;
+}
+#content a:hover,#content a:active{
+	color:#036;
+	text-decoration:none;
+}
+/* =navigation */
+#nav{
+	clear:both;
+	font-weight:bold;
+	color:#666;
+	--margin-left:4px;
+	float:left;
+	list-style-type:none;
+}
+#nav li{
+	list-style-type:none;
+	float:left;
+	margin:0 0 0 4px;
+	padding:0 0 0 10px ;
+	border-bottom:1px solid #999;
+	background: #f5f5f5;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+#nav li a{
+	color:#666;
+	display:block;
+	padding:4px 10px 0 0;
+	background: #f5f5f5;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+#nav li.cur,
+#nav li.over,
+#nav li:hover
+{
+	border-bottom:1px solid #036;
+}
+#nav li strong,
+ul#nav li.cur a,
+ul#nav li.over a,
+ul#nav li:hover a
+{
+	display:block;
+	color:#fff;
+	padding:4px 10px 0 0;
+	text-decoration:none;
+	background: #9c9c9c;
+}
+.quick-menu ul li{ 
+	display: inline-block;
+	padding-left: 15px;
+}
+.thumb {float: left;}
+.candidate-details { float: left;}
+ul .submenu{margin-top: -14px;}
+.user-button {background:#61005e; color:#fff;border-left:1px solid grey}
+.user-button:hover {color:#eabc58;}
+.dropdown-menu li {color: red;}

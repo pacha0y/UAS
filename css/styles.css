@@ -1,0 +1,105 @@
+.container {background: #f9f3e7;padding: 10;}
+.uas-header img { width: 120px; height: 120px;}
+#uas-logo { float: left;}
+#uas-title { position: relative;}
+.uas-note{ border: 1px solid red; padding: 4px; }
+.uas-instruct{ border: 1px solid #000; padding: 4px; width: 100%}
+.uas-nav {}
+.uas-nav ul {z-index:6; list-style: none; background-color: #61005e;//#444; text-align: center; padding: 0; margin: 0; position: relative;}
+.uas-nav li { font-family: 'Oswald', sans-serif; font-size: 1.2em; line-height: 40px; text-align: left;}
+.uas-nav a { text-decoration: none; color: #fff; display: block; padding-left: 15px; border-bottom: 1px solid #888; 					transition: .3s background-color;}
+.uas-nav a:hover { background-color: #005f5f;}
+.uas-nav a.active { background-color: #aaa; color: #444; cursor: default;}
+/* Sub Menus */
+.uas-nav li li { font-size: .8em;}
+
+/*******************************************
+   Style menu for larger screens
+
+   Using 650px (130px each * 5 items), but ems
+   or other values could be used depending on other factors
+********************************************/
+
+@media screen and (min-width: 650px) {
+  .uas-nav li {
+    width: 130px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+    display: inline-block;
+
+    margin-right: -4px;
+  }
+
+  .uas-nav a {
+    border-bottom: none;
+  }
+
+  .uas-nav > ul > li {
+    text-align: center;
+  }
+
+  .uas-nav > ul > li > a {
+    padding-left: 0;
+  }
+
+  /* Sub Menus */
+  .uas-nav li ul {
+    position: absolute;
+    display: none;
+    width: inherit;
+  }
+
+  .uas-nav li:hover ul {
+    display: block;
+  }
+
+  .uas-nav li ul li {
+    display: block;
+  }
+}
+.uos-menu {
+margin-bottom: 10px;color: #fff;
+}
+.uos-menu ul li a{
+background: #ce7d00;
+color: black;
+border-bottom: 1px solid #f5f5f5;
+}
+
+.uos-menu li:hover { background: #e8ba4a; }
+.uos-menu ul li a:hover { background: #e8ba4a;#eee; }
+.uos-menu li:hover > ul {
+display: block;
+top: 0;
+left: 100%;
+visibility: visible;
+}
+.uos-menu li .uos-menu-children { border: 1px solid #b7b7b7; }
+.uos-menu-horizontal > ul > li:hover > ul {
+top: 100%;
+left: 0;
+}
+.panel-footer { background: #650062; text-align: center; color: #fff;}
+.footer{
+	margin-top: 100px;
+}
+.login_box {
+	border-right: 1px solid #CCC;
+}
+.register-sec {
+	align-content: center;
+}
+.marginleft2 {
+	text-align: center;
+}
+.shift_down{margin-left: 35px;}
+.login-form label { width: 100px;}
+.forgot-pass {margin-left: 100px;}
+.align-buttons {margin-left: 100px}
+
+.deposit-form label, .kin-form label, .student-form label{ width: 140px; text-align: right;}
+.register-form label{width: 120px; text-align: right;}
+.nav-bar li a { padding: 7px;}
+.label-column {font-weight: bold;}

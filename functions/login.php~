@@ -1,0 +1,70 @@
+<?php
+
+include_once("$_SERVER[DOCUMENT_ROOT]/uas/connection/connect.php");
+
+session_start();
+class User
+{
+	private $user_db;
+	/**
+	*User class constructor
+	*/
+	public function __construct()
+	{
+		try
+		{
+			$this->user_db= new Connection();
+			
+			$this->user_db=$this->user_db->dbConnect();
+			
+			$this->user_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		}
+		catch(PDOException $e)
+		{
+			echo "Error! Could not connect to Server. Please try later.".$e;
+		}//end of try-catch statement
+		
+	}//end of constructors
+		/**
+	*Allows user to login
+	*@param user name, password;
+	*@return array;
+	*/
+	public function login($username,$password)
+	{
+		$password = md5($password);
+		try
+		{
+			//query
+			$user = $this->user_db->prepare("SELECT * FROM users WHERE username =? AND password =?");
+		
+			//bind parameters
+			$user ->bindParam(1, $username);
+			
+			$user ->bindParam(2, $password);	
+			
+			//executes the query.
+			$user->execute();
+			
+			$rows = $user ->fetch();
+			
+			//check if user exist.
+			if($rows >0){
+				//user name
+				$_SESSION['username'] = $rows['username'];
+								
+				//redirects to home page, index.php
+				header('location:index.php');
+			}else{
+				$_SESSION['login_error'];
+				
+			}//end of if-else statement
+		}
+		catch(PDOException $e)
+		{
+			echo "Error! Something went wrong. Try later.";
+		}//end of try-catch statement
+		
+	}//end of login function
+}
+?>

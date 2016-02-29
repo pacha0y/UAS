@@ -1,0 +1,54 @@
+<?php
+session_start();
+if(isset($_POST['prev_school']) && isset($_POST['sc_district'])) {
+	
+	if(isset($_POST['c_name']) && isset($_POST['c_number']) && isset($_POST['cand_number'])){
+		$_SESSION['prev_school'] = $_POST['prev_school'];
+		$_SESSION['sc_district'] = $_POST['sc_district'];
+		$c_name = $_POST['c_name'];
+		$c_number = $_POST['c_number'];
+		$cand_number = $_POST['cand_number'];
+		
+		for($i=0;$i<3;$i++) {
+			if(!empty($c_name[$i]) && !empty($c_number[$i]) && !empty($cand_number[$i])) {
+				$_SESSION['c_name_'.$i] = $c_name[$i];
+				$_SESSION['c_number_'.$i] = $c_number[$i];
+				$_SESSION['cand_number_'.$i] = $cand_number[$i];
+				//echo $_SESSION['c_name_'.$i].' '.$_SESSION['c_number_'.$i].' '.$_SESSION['cand_number_'.$i];
+			}
+		}//die();
+	}
+	/**if((isset($_POST['c_name_1']) && isset($_POST['c_number_1']) && isset($_POST['cand_number_1']))
+	|| (isset($_POST['c_name_2']) && isset($_POST['c_number_2']) && isset($_POST['cand_number_2']))
+	|| (isset($_POST['c_name_3']) && isset($_POST['c_number_3']) && isset($_POST['cand_number_3']))) {
+		
+		$_SESSION['prev_school'] = $_POST['prev_school'];
+		$_SESSION['sc_district'] = $_POST['sc_district'];
+		$_SESSION['c_name_1'] = " ";
+		$_SESSION['c_number_1'] = " ";
+		$_SESSION['cand_number_1'] = " ";
+		$_SESSION['c_name_2'] = " ";
+		$_SESSION['c_number_2'] = " ";
+		$_SESSION['cand_number_2'] = " ";
+		$_SESSION['c_name_3'] = " ";
+		$_SESSION['c_number_3'] = " ";
+		$_SESSION['cand_number_3'] = " ";
+			
+		if(isset($_POST['c_name_1']) && isset($_POST['c_number_1']) && isset($_POST['cand_number_1'])) {
+			$_SESSION['c_name_1'] = $_POST['c_name_1'];
+			$_SESSION['c_number_1'] = $_POST['c_number_1'];
+			$_SESSION['cand_number_1'] = $_POST['cand_number_1'];
+		}
+		if(isset($_POST['c_name_2']) && isset($_POST['c_number_2']) && isset($_POST['cand_number_2'])) {
+			$_SESSION['c_name_2'] = $_POST['c_name_2'];
+			$_SESSION['c_number_2'] = $_POST['c_number_2'];
+			$_SESSION['cand_number_2'] = $_POST['cand_number_2'];
+		}
+		if(isset($_POST['c_name_3']) && isset($_POST['c_number_3']) && isset($_POST['cand_number_3'])) {
+			$_SESSION['c_name_3'] = $_SESSION['c_name_3'];
+			$_SESSION['c_number_3'] = $_SESSION['c_number_3'];
+			$_SESSION['cand_number_3'] = $_SESSION['cand_number_3'];
+		}
+	}*/
+}
+?>

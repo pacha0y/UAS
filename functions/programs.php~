@@ -1,0 +1,227 @@
+<?php
+
+include_once("$_SERVER[DOCUMENT_ROOT]/uas/connection/connect.php");
+
+session_start();
+class Programs{
+	
+	private $program_db;
+	/**
+	*User class constructor
+	*/
+	public function __construct(){
+		try{
+			
+			$this->program_db= new Connection();
+			
+			$this->program_db=$this->program_db->dbConnect();
+			
+			$this->program_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Could not connect to Server. Please try later. Contact support";
+			
+		}//end of try-catch statement
+		
+	}//end of constructors
+	
+	/**
+	*View programmes function
+	*
+	*@return list of programmes;
+	*/
+	public function viewPrograms(){
+		try{
+			
+			$query = $this->program_db->prepare("SELECT programmes.programme as programme, university.name as un_name, programmes.description as description FROM programmes 
+				INNER JOIN faculty ON(programmes.faculty = faculty.id) 
+				INNER JOIN university ON(faculty.university = university.code)");
+			$query->execute();
+			$row = $query ->fetchAll(PDO::FETCH_ASSOC);
+			foreach($row as $programmes){
+				$_SESSION['programmes'] = $row;
+			}			
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Contact support.";
+			
+		}//end of try-catch statement
+	}//end of view programmes function
+	
+	/**
+	*add college function
+	*@param code, name, address
+	*/
+	public function addCollege($Code,$Name,$Address){
+		try{
+			//query
+			$query = $this->program_db->prepare("INSERT INTO university(code,name,address) VALUES (?,?,?)");
+			$query ->bindParam(1, $Code);
+			$query ->bindParam(2, $Name);
+			$query ->bindParam(3, $Address);
+				
+			$query->execute();
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Try later.";
+			
+		}//end of try-catch statement
+		
+	}//end of add college function
+	
+	/**
+	*retrieve list of universities
+	*/ 
+	public function retrieve(){
+		try{
+			//query
+			$query = $this->program_db->prepare("SELECT * FROM university");
+			$query->execute();
+			$results = $query ->fetchAll(PDO::FETCH_ASSOC);
+			foreach($results as $result){
+				$_SESSION['unima'] = $results;
+			}			
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Try later.";
+			
+		}//end of try-catch statement
+		
+	}//end of retrieve function
+	
+	/**
+	*retrieve faculty list function
+	*@return list of faculties
+	*/
+	public function retrieveFaculty(){
+		try{
+			//query
+			$query = $this->program_db->prepare("SELECT * FROM faculty");
+			$query->execute();
+			$results = $query ->fetchAll(PDO::FETCH_ASSOC);
+			foreach($results as $result){
+				$_SESSION['faculty'] = $results;
+			}			
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Try later.";
+			
+		}//end of try-catch statement
+		
+	}//end of retrieve faculty function
+	
+	
+	public function getId($name){
+		try{
+			//query
+			$query = $this->program_db->prepare("SELECT * FROM users WHERE username=?");
+			$query ->bindParam(1, $name);
+			
+			$query->execute();
+			$results = $query->fetch();
+			
+				$_SESSION['userId'] = $results['user_id'];
+						
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Try later.";
+			
+		}//end of try-catch statement
+		
+	}//end of get id function
+	
+	/**
+	*add faculty function
+	*@param name, university_id
+	*/
+	public function addFaculty($name,$uni_id){
+		try{
+			//query
+			$query = $this->program_db->prepare("INSERT INTO faculty(name,uni_id) VALUES (?,?)");
+			$query ->bindParam(1, $name);
+			$query ->bindParam(2, $uni_id);
+				
+			$query->execute();
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Try later.";
+			
+		}//end of try-catch statement
+		
+	}//end of add class function
+	
+	
+	public function getPass($name){
+		try{
+			//query
+			$query = $this->program_db->prepare("SELECT * FROM users_applicants WHERE exam_id=? ");
+			$query ->bindParam(1, $name);
+	
+				
+			$query->execute();
+			
+			$results = $query->fetch();
+		
+
+				$_SESSION['password']	= $results['password'];
+	
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Try later.";
+			
+		}//end of try-catch statement
+		
+	}//end of get pass function
+	
+	public function updatePassword($pass,$name){
+		try{
+			//query
+			$query = $this->program_db->prepare("UPDATE users_applicants set password=? WHERE exam_id = ? ");
+			$query ->bindParam(1, $pass);
+			$query ->bindParam(2, $name);
+				
+			$query->execute();
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Try later.";
+			
+		}//end of try-catch statement
+		
+	}//end of update function 
+	
+	/**
+	*add programmes function
+	*@param program code, university id, program name, description, requirements and duration
+	*/
+	public function addProgram($prog_code,$uni_id,$program,$description,$requirements,$duration){
+		try{
+			//query
+			$query = $this->program_db->prepare("INSERT INTO programmes(programme_code,un_id,programme,description,requirements,duration) VALUES (?,?,?,?,?,?)");
+			$query ->bindParam(1, $prog_code);
+			$query ->bindParam(2, $uni_id);
+			$query ->bindParam(3, $program);
+			$query ->bindParam(4, $description);
+			$query ->bindParam(5, $requirements);
+			$query ->bindParam(6, $duration);
+			$query->execute();
+		}
+		catch(PDOException $e){
+			
+			echo "Error! Something went wrong. Try later.";
+			
+		}//end of try-catch statement
+		
+	}//end of add program function
+	
+}//end of program's class
+
+?>

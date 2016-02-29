@@ -1,0 +1,18 @@
+<?php
+session_start();
+	$_SESSION['firstname'] = $_POST['firstname'];
+	$_SESSION['lastname'] = $_POST['lastname'];
+	$_SESSION['initial'] = $_POST['initial'];
+	$_SESSION['dob'] = $_POST['dob'];
+	$_SESSION['sex'] = $_POST['sex'];
+	$_SESSION['nationality'] = $_POST['nationality'];
+	$_SESSION['district'] = $_POST['district'];
+	$_SESSION['t_authority'] = $_POST['t_authority'];
+	$_SESSION['village'] = $_POST['village'];
+	$_SESSION['c_address'] = $_POST['c_address'];
+	$_SESSION['c_tel'] = $_POST['c_tel'];
+	$_SESSION['c_mobile'] = $_POST['c_mobile'];
+	$_SESSION['c_email'] = $_POST['c_email'];
+	$_SESSION['pass_photo'] = $_POST['pass_photo'];
+	echo $_SESSION['firstname'];
+?>
